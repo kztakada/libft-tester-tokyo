@@ -21,10 +21,11 @@ LIBS			= 	./libs/*/*.a
 CC				=	gcc
 CFLAGS			=	-Wall -Wextra -Werror
 LDFLAGS =
-
+PICFLAG =
 UNAME_S := $(shell uname -s)
 ifeq ($(UNAME_S),Linux)
     LDFLAGS += -lbsd
+	PICFLAG += CFLAGS="-Wall -Wextra -Werror -fPIC"
 endif
 
 INCS			=	./includes\
@@ -158,7 +159,7 @@ libft-02: start_reloaded_tests $(RE_LIBFT02_TARG)
 
 start_tests:
 	@$(RM) $(ERROR_LOG)
-	make -C $(LIBFT_DIR) CFLAGS="-Wall -Wextra -Werror -fPIC"
+	make -C $(LIBFT_DIR) $(PICFLAG)
 	make -C ./libs/libassert
 	@#make -C $(LIBFT_DIR) bonus
 
