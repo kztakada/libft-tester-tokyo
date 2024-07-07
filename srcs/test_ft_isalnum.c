@@ -11,36 +11,52 @@
 /* ************************************************************************** */
 
 #include "tester.h"
+#ifdef __linux__
+#define OS_NAME "Linux"
+#else
+#define OS_NAME ""
+#endif
+
+int	test_isalnum(int c)
+{
+	if (strcmp(OS_NAME, "Linux") == 0)
+	{
+		if (isalnum(c) == 0)
+			return (0);
+		return (1);
+	}
+		return (isalnum(c));
+}
 
 int	main(void)
 {
-	/* 1 */ ASSERT_EQ_I(ft_isalnum('a'), isalnum('a'));
-	/* 2 */ ASSERT_EQ_I(ft_isalnum('a' - 1), isalnum('a' - 1));
-	/* 3 */ ASSERT_EQ_I(ft_isalnum('a' + 1), isalnum('a' + 1));
-	/* 4 */ ASSERT_EQ_I(ft_isalnum('z'), isalnum('z'));
-	/* 5 */ ASSERT_EQ_I(ft_isalnum('z' - 1), isalnum('z' - 1));
-	/* 6 */ ASSERT_EQ_I(ft_isalnum('z' + 1), isalnum('z' + 1));
-	/* 7 */ ASSERT_EQ_I(ft_isalnum('A'), isalnum('A'));
-	/* 8 */ ASSERT_EQ_I(ft_isalnum('A' - 1), isalnum('A' - 1));
-	/* 9 */ ASSERT_EQ_I(ft_isalnum('A' + 1), isalnum('A' + 1));
-	/* 10 */ ASSERT_EQ_I(ft_isalnum('Z'), isalnum('Z'));
-	/* 11 */ ASSERT_EQ_I(ft_isalnum('Z' - 1), isalnum('Z' - 1));
-	/* 12 */ ASSERT_EQ_I(ft_isalnum('Z' + 1), isalnum('Z' + 1));
-	/* 13 */ ASSERT_EQ_I(ft_isalnum('a' + 256), isalnum('a' + 256));
-	/* 14 */ ASSERT_EQ_I(ft_isalnum('a' - 256), isalnum('a' - 256));
-	/* 15 */ ASSERT_EQ_I(ft_isalnum('a' + 1), isalnum('a' + 1));
-	/* 16 */ ASSERT_EQ_I(ft_isalnum('0'), isalnum('0'));
-	/* 17 */ ASSERT_EQ_I(ft_isalnum('0' - 1), isalnum('0' - 1));
-	/* 18 */ ASSERT_EQ_I(ft_isalnum('0' + 1), isalnum('0' + 1));
-	/* 19 */ ASSERT_EQ_I(ft_isalnum('9'), isalnum('9'));
-	/* 20 */ ASSERT_EQ_I(ft_isalnum('9' - 1), isalnum('9' - 1));
-	/* 21 */ ASSERT_EQ_I(ft_isalnum('9' + 1), isalnum('9' + 1));
-	/* 22 */ ASSERT_EQ_I(ft_isalnum('!'), isalnum('!'));
-	/* 23 */ ASSERT_EQ_I(ft_isalnum('{'), isalnum('}'));
-	/* 24 */ ASSERT_EQ_I(ft_isalnum('~'), isalnum('~'));
-	/* 25. zero */ ASSERT_EQ_I(ft_isalnum(0), isalnum(0));
-	/* 26. INI_MAX */ ASSERT_EQ_I(ft_isalnum(INT_MAX), isalnum(INT_MAX));
-	/* 27. INT_MIN */ ASSERT_EQ_I(ft_isalnum(INT_MIN), isalnum(INT_MIN));
-	/* 28 (-256~255) */ for (int i = -256; i < 256; i++) { ASSERT_EQ_I(ft_isalnum(i), isalnum(i)); }
+	/* 1 */ ASSERT_EQ_I(ft_isalnum('a'), test_isalnum('a'));
+	/* 2 */ ASSERT_EQ_I(ft_isalnum('a' - 1), test_isalnum('a' - 1));
+	/* 3 */ ASSERT_EQ_I(ft_isalnum('a' + 1), test_isalnum('a' + 1));
+	/* 4 */ ASSERT_EQ_I(ft_isalnum('z'), test_isalnum('z'));
+	/* 5 */ ASSERT_EQ_I(ft_isalnum('z' - 1), test_isalnum('z' - 1));
+	/* 6 */ ASSERT_EQ_I(ft_isalnum('z' + 1), test_isalnum('z' + 1));
+	/* 7 */ ASSERT_EQ_I(ft_isalnum('A'), test_isalnum('A'));
+	/* 8 */ ASSERT_EQ_I(ft_isalnum('A' - 1), test_isalnum('A' - 1));
+	/* 9 */ ASSERT_EQ_I(ft_isalnum('A' + 1), test_isalnum('A' + 1));
+	/* 10 */ ASSERT_EQ_I(ft_isalnum('Z'), test_isalnum('Z'));
+	/* 11 */ ASSERT_EQ_I(ft_isalnum('Z' - 1), test_isalnum('Z' - 1));
+	/* 12 */ ASSERT_EQ_I(ft_isalnum('Z' + 1), test_isalnum('Z' + 1));
+	/* 13 */ ASSERT_EQ_I(ft_isalnum('a' + 256), test_isalnum('a' + 256));
+	/* 14 */ ASSERT_EQ_I(ft_isalnum('a' - 256), test_isalnum('a' - 256));
+	/* 15 */ ASSERT_EQ_I(ft_isalnum('a' + 1), test_isalnum('a' + 1));
+	/* 16 */ ASSERT_EQ_I(ft_isalnum('0'), test_isalnum('0'));
+	/* 17 */ ASSERT_EQ_I(ft_isalnum('0' - 1), test_isalnum('0' - 1));
+	/* 18 */ ASSERT_EQ_I(ft_isalnum('0' + 1), test_isalnum('0' + 1));
+	/* 19 */ ASSERT_EQ_I(ft_isalnum('9'), test_isalnum('9'));
+	/* 20 */ ASSERT_EQ_I(ft_isalnum('9' - 1), test_isalnum('9' - 1));
+	/* 21 */ ASSERT_EQ_I(ft_isalnum('9' + 1), test_isalnum('9' + 1));
+	/* 22 */ ASSERT_EQ_I(ft_isalnum('!'), test_isalnum('!'));
+	/* 23 */ ASSERT_EQ_I(ft_isalnum('{'), test_isalnum('}'));
+	/* 24 */ ASSERT_EQ_I(ft_isalnum('~'), test_isalnum('~'));
+	/* 25. zero */ ASSERT_EQ_I(ft_isalnum(0), test_isalnum(0));
+	// undefined: /* 26. INI_MAX */ ASSERT_EQ_I(ft_isalnum(INT_MAX), test_isalnum(INT_MAX));
+	// undefined: /* 27. INT_MIN */ ASSERT_EQ_I(ft_isalnum(INT_MIN), test_isalnum(INT_MIN));
+	/* 28 (-256~255) */ for (int i = -256; i < 256; i++) { ASSERT_EQ_I(ft_isalnum(i), test_isalnum(i)); }
 	return (0);
 }
