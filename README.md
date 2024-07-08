@@ -66,11 +66,11 @@ $ make norm00
 <img width="1369" alt="Screen Shot 2022-04-18 at 15 27 40" src="https://user-images.githubusercontent.com/7609060/163765260-3fad885b-e00a-4b3f-9468-cc998ae5cb24.png">
 
 ## Note for use with Linux (Ubuntu 22.04)
-Only when the test is run, CFLAGS in the Mikefile in libft is temporarily rewritten to the following
+Only when the test is run, `CFLAGS` in the Mikefile in libft is temporarily rewritten to the following
 ```
 CFLAGS　=　-Wall -Wextra -Werror -fPIC
 ```
-If you have written anything other than -Wall -Wextra -Werror in CFLAGS, or -Wall -Wextra -Werror elsewhere, please be careful!
+If you have written anything other than `-Wall -Wextra -Werror` in `CFLAGS`, or `-Wall -Wextra -Werror` elsewhere, please be careful!
 
 # Please add more test cases!
 Thanks for trying it out!
