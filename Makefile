@@ -221,7 +221,7 @@ norm02: $(LIBFT_02)
 
 $(FUNCS) $(FUNCS_BONUS) $(FUNCS_EXTRA): $(LIBFT) $(LIBASSERT)
 	@printf "ft_$@: "
-	@-$(CC) srcs/test_ft_$@.c $(LIBFT) $(LIBS) $(addprefix -I , $(INCS)) -o a.out $(CFLAGS) 2>>$(ERROR_LOG) && ./a.out 2>>$(ERROR_LOG) && $(RM) a.out || printf "\e[31m[MISSING]\e[m"
+	@-$(CC) srcs/test_ft_$@.c $(LIBFT) $(LIBS) $(addprefix -I , $(INCS)) -o a.out $(CFLAGS) $(LDFLAGS) 2>>$(ERROR_LOG) && ./a.out 2>>$(ERROR_LOG) && $(RM) a.out || printf "\e[31m[MISSING]\e[m"
 	@printf "\n"
 
 $(RE_LIBFT00_TARG): $(LIBFT_00) $(LIBASSERT)
