@@ -39,8 +39,8 @@ int	main(void)
 	/* 23 */ ASSERT_EQ_I(ft_isalnum('{'), isalnum('}'));
 	/* 24 */ ASSERT_EQ_I(ft_isalnum('~'), isalnum('~'));
 	/* 25. zero */ ASSERT_EQ_I(ft_isalnum(0), isalnum(0));
-	// undefined: /* 26. INI_MAX */ ASSERT_EQ_I(ft_isalnum(INT_MAX), isalnum(INT_MAX));
-	// undefined: /* 27. INT_MIN */ ASSERT_EQ_I(ft_isalnum(INT_MIN), isalnum(INT_MIN));
+	/* 26. INT_MAX */ ASSERT_EQ_I(ft_isalnum(INT_MAX), isalnum(INT_MAX));
+	/* 27. INT_MIN */ ASSERT_EQ_I(ft_isalnum(INT_MIN), isalnum(INT_MIN));
 	/* 28 (-256~255) */ for (int i = -256; i < 256; i++) { ASSERT_EQ_I(ft_isalnum(i), isalnum(i)); }
 	return (0);
 }
