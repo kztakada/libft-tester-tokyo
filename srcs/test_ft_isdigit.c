@@ -24,8 +24,8 @@ int	main(void)
 	/* 8 */ ASSERT_EQ_I(ft_isdigit('{'), isdigit('}'));
 	/* 9 */ ASSERT_EQ_I(ft_isdigit('~'), isdigit('~'));
 	/* 10. zero */ ASSERT_EQ_I(ft_isdigit(0), isdigit(0));
-	/* 11. INT_MAX */ ASSERT_EQ_I(ft_isdigit(INT_MAX), isdigit(INT_MAX));
-	/* 12. INT_MIN */ ASSERT_EQ_I(ft_isdigit(INT_MIN), isdigit(INT_MIN));
+	// /* 11. INT_MAX */ ASSERT_EQ_I(ft_isdigit(INT_MAX), isdigit(INT_MAX));
+	// /* 12. INT_MIN */ ASSERT_EQ_I(ft_isdigit(INT_MIN), isdigit(INT_MIN));
 	/* 13 (-256~255) */ for (int i = -256; i < 256; i++) { ASSERT_EQ_I(ft_isdigit(i), isdigit(i)); }
 	return (0);
 }

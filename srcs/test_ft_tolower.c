@@ -11,9 +11,30 @@
 /* ************************************************************************** */
 
 #include "tester.h"
+#include <stdio.h>
+#include <stdlib.h>
+#include <string.h>
+#include <locale.h>
 
 int	main(void)
 {
+	FILE *fp;
+    char locale[128];
+
+    // locale -a コマンドを実行して、利用可能なロケールを取得
+    fp = popen("locale -a", "r");
+    if (fp == NULL) {
+        printf("Failed to run command\n");
+        exit(1);
+    }
+
+    // 利用可能なロケールを一つずつ読み取り
+    while (fgets(locale, sizeof(locale)-1, fp) != NULL) {
+        // 改行文字を削除
+        locale[strcspn(locale, "\n")] = 0;
+
+        // ロケールを設定
+        setlocale(LC_CTYPE, locale);
 	/* 1 */ ASSERT_EQ_I(ft_tolower('a'), tolower('a'));
 	/* 2 */ ASSERT_EQ_I(ft_tolower('a' - 1), tolower('a' - 1));
 	/* 3 */ ASSERT_EQ_I(ft_tolower('a' + 1), tolower('a' + 1));
@@ -36,5 +57,10 @@ int	main(void)
 	/* 20. INT_MAX */ ASSERT_EQ_I(ft_tolower(INT_MAX), tolower(INT_MAX));
 	/* 21. INT_MIN */ ASSERT_EQ_I(ft_tolower(INT_MIN), tolower(INT_MIN));
 	/* 22 (-256~255) */ for (int i = -256; i < 256; i++) { ASSERT_EQ_I(ft_tolower(i), tolower(i)); }
+    }
+
+    // コマンド実行を終了
+    pclose(fp);
+
 	return (0);
 }

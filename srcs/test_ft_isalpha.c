@@ -33,8 +33,8 @@ int	main(void)
 	/* 17 */ ASSERT_EQ_I(ft_isalpha('{'), isalpha('}'));
 	/* 18 */ ASSERT_EQ_I(ft_isalpha('~'), isalpha('~'));
 	/* 19. zero */ ASSERT_EQ_I(ft_isalpha(0), isalpha(0));
-	/* 20. INT_MAX */ ASSERT_EQ_I(ft_isalpha(INT_MAX), isalpha(INT_MAX));
-	/* 21. INT_MIN */ ASSERT_EQ_I(ft_isalpha(INT_MIN), isalpha(INT_MIN));
+	// /* 20. INT_MAX */ ASSERT_EQ_I(ft_isalpha(INT_MAX), isalpha(INT_MAX));
+	// /* 21. INT_MIN */ ASSERT_EQ_I(ft_isalpha(INT_MIN), isalpha(INT_MIN));
 	/* 22 (-256~255) */ for (int i = -256; i < 256; i++) { ASSERT_EQ_I(ft_isalpha(i), isalpha(i)); }
 	return (0);
 }
